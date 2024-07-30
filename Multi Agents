@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             agent { label 'sonar' }
             steps {
-                echo 'Building'
+                echo 'Building the project'
               
             }
         }
