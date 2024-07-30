@@ -1,0 +1,37 @@
+pipeline {
+    agent none
+    stages {
+        stage('Checkout') {
+            agent { label 'tomcat' }
+            steps {
+                git credentialsId: 'git', url: 'https://github.com/Pshatti/Jenkins-.git'
+
+            }
+        }
+	stage('Test') {
+            agent { label 'tomcat' }
+	      steps {
+              echo "Testing"
+
+            }
+        }
+
+        stage('Build') {
+            agent { label 'sonar' }
+            steps {
+                sh 'mvn clean package'
+              
+            }
+        }
+	
+	stage('Deploy') {
+            agent { label 'sonar' }
+            steps {
+                sh 'Deploying'
+              
+            }
+        }
+
+
+    }
+}
