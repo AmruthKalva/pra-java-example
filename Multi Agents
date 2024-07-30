@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             agent { label 'sonar' }
             steps {
-                sh 'mvn clean package'
+                echo 'Building'
               
             }
         }
@@ -27,7 +27,7 @@ pipeline {
 	stage('Deploy') {
             agent { label 'sonar' }
             steps {
-                sh 'Deploying'
+                echo 'Deploying'
               
             }
         }
